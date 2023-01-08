@@ -21,3 +21,7 @@ cnt = mysql.connector.connect(
     )
 
 mycursor = cnt.cursor()
+
+mycursor.execute("USE F1")
+mycursor.execute("SHOW tables")
+dbtables = mycursor.fetchall()
