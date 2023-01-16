@@ -25,3 +25,12 @@ mycursor = cnt.cursor()
 mycursor.execute("USE F1")
 mycursor.execute("SHOW tables")
 dbtables = mycursor.fetchall()
+print(dbtables)
+
+"""test = pd.read_csv(join(dataloc,f1files[0]),delimiter=",")
+test = test.where(test != "\\N",pd.NA)
+
+test.to_sql("circuits",con=engine,if_exists="append",index=False)
+mycursor.execute("SELECT * FROM circuits")
+print(mycursor.fetchall())
+"""
