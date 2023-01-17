@@ -1,36 +1,42 @@
 import pandas as pd
+import numpy as np
 import sqlalchemy
 import mysql.connector
 from os import listdir
 from os.path import isfile, join
 from MellonAccess import MellonArray
 
-dataloc = "C:\\Users\\joeye\\Desktop\\Projets\\Programming\\Data\\F1Data_archive\\" #Directory with all F1 data files
-f1files = [f for f in listdir(dataloc) if isfile(join(dataloc, f))]  #Gathering data files names
-
-
-mc = MellonArray() #Pulls username and password to access MySQL
-mcu = str(mc[0])[2:-2] #Cleaning string username for SQL connector
-mcp = str(mc[1])[2:-2] #Cleaning string password for SQL connector
+dataloc = "C:\\Users\\joeye\\Desktop\\Projets\\Programming\\Data\\F1Data_archive\\" #Directory with all F1 data files.
+f1files = [f for f in listdir(dataloc) if isfile(join(dataloc, f))]  #Gathering data files names.
+mc = MellonArray() #Pulls username and password to access MySQL.
+mcu = str(mc[0])[2:-2] #Cleaning string username for SQL connector.
+mcp = str(mc[1])[2:-2] #Cleaning string password for SQL connector.
 engine = sqlalchemy.create_engine("mysql://" + mcu + ":" + mcp + "@localhost/F1") #to_sql function requires a sqlalchemy engine. Unable to use mysql connector.
+n = 0
 
+#MySQL Connector.
 cnt = mysql.connector.connect(
     user= mcu,
     password= mcp,
     host= "127.0.0.1"
     )
-
 mycursor = cnt.cursor()
 
+# Pull table names from MySQL into a cleaned list.
 mycursor.execute("USE F1")
 mycursor.execute("SHOW tables")
 dbtables = mycursor.fetchall()
-print(dbtables)
+dbclean = [x[0] for x in dbtables] # Fetchall function pulls in a list of tuples. Added line to make into cleaned strings for to_sql function.
 
-"""test = pd.read_csv(join(dataloc,f1files[0]),delimiter=",")
-test = test.where(test != "\\N",pd.NA)
+'''
+test = pd.read_csv(join(dataloc,'drivers.csv'),delimiter=",")
+test = test.where(test != "\\N",np.nan) # Replacing null values in CSVs with NaN. to_sql function does not accept /N as null.
+print(test.columns.tolist())
+'''
 
-test.to_sql("circuits",con=engine,if_exists="append",index=False)
-mycursor.execute("SELECT * FROM circuits")
-print(mycursor.fetchall())
-"""
+# Moving data from CSVs into MySQL.
+for f in f1files:
+    test = pd.read_csv(join(dataloc,f1files[n]),delimiter=",")
+    test = test.where(test != "\\N",np.nan) # Replacing null values in CSVs with NaN. to_sql function does not accept /N as null.
+    test.to_sql(dbclean[n],con=engine,if_exists="append",index=False)
+    n = n + 1
