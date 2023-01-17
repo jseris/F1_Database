@@ -28,12 +28,6 @@ mycursor.execute("SHOW tables")
 dbtables = mycursor.fetchall()
 dbclean = [x[0] for x in dbtables] # Fetchall function pulls in a list of tuples. Added line to make into cleaned strings for to_sql function.
 
-'''
-test = pd.read_csv(join(dataloc,'drivers.csv'),delimiter=",")
-test = test.where(test != "\\N",np.nan) # Replacing null values in CSVs with NaN. to_sql function does not accept /N as null.
-print(test.columns.tolist())
-'''
-
 # Moving data from CSVs into MySQL.
 for f in f1files:
     test = pd.read_csv(join(dataloc,f1files[n]),delimiter=",")
