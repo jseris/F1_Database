@@ -13,14 +13,14 @@ cnt = mysql.connector.connect(
 
 mycursor = cnt.cursor()
 
-mycursor.execute("USE F1_test")
+mycursor.execute("USE F1")
 
 mycursor.execute("CREATE TABLE Circuits(circuitId INT PRIMARY KEY, circuitRef VARCHAR(50), name VARCHAR(50), location VARCHAR(50), country VARCHAR(50), lat VARCHAR(50), lng VARCHAR(50), alt INT, url VARCHAR(255))")
 mycursor.execute("CREATE TABLE Constructor(constructorId INT PRIMARY KEY, constructorRef VARCHAR(50), name VARCHAR(50), nationality VARCHAR(50), url VARCHAR(255))")
 mycursor.execute("CREATE TABLE ConstructorResults(constructorResultsId INT PRIMARY KEY, raceId INT, constructorId INT, points INT, status VARCHAR(50))")
 mycursor.execute("CREATE TABLE ConstructorStandings(constructorStandingsId INT PRIMARY KEY, raceId INT, constructorId INT, points INT, position INT, positionText VARCHAR(5), wins INT)")
 mycursor.execute("CREATE TABLE DriverStandings(driverStandingsId INT PRIMARY KEY, raceId INT, driverId INT, points INT, position INT, positionText VARCHAR(5), wins INT)")
-mycursor.execute("CREATE TABLE Drivers(driversId INT PRIMARY KEY, driverRef VARCHAR(50), number INT, code CHAR(3), forename VARCHAR(50), surname VARCHAR(50),dob VARCHAR(10), nationality VARCHAR(50), url VARCHAR(255))")
+mycursor.execute("CREATE TABLE Drivers(driverId INT PRIMARY KEY, driverRef VARCHAR(50), number INT, code CHAR(3), forename VARCHAR(50), surname VARCHAR(50),dob VARCHAR(10), nationality VARCHAR(50), url VARCHAR(255))")
 mycursor.execute("CREATE TABLE Lap_Times(raceId INT, driverId INT, lap INT, position INT, time VARCHAR(10), milliseconds VARCHAR(7))")
 mycursor.execute("CREATE TABLE Pit_Stops(raceId INT, driverId INT, stop INT, lap INT, time VARCHAR(15), duration FLOAT, milliseconds VARCHAR(7))")
 mycursor.execute("CREATE TABLE Qualifying(qualifyingId INT PRIMARY KEY, raceId INT, driverID INT, constructorId INT, number INT, position INT, q1 VARCHAR(10), q2 VARCHAR(10), q3 VARCHAR(10))")
