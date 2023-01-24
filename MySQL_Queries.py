@@ -31,4 +31,19 @@ def driverstat(): #driver data by race. Breaking up SQL statement by variables t
     df = pd.read_sql(script, cnt) # There is a warning using a connector other than SQLAlchemy. Output still looks good :)
     print(df)
 
+def ferraristat(): #Ferrari constructor points data for each race. Breaking up SQL statment by variables to promote easier reading.
+    fields = "c.name, cr.points, r.name, r.date, r.year"
+    table = "constructorresults cr"
+    join1 = "constructor c ON c.constructorId = cr.constructorId"
+    join2 = "races r ON r.raceId = cr.raceId"
+    wh = "c.name = 'Ferrari'"
+    script = f"""SELECT {fields} FROM {table}
+                    INNER JOIN {join1}
+                    INNER JOIN {join2}
+                    WHERE {wh};
+                    """
+    df = pd.read_sql(script, cnt) # There is a warning using a connector other than SQLAlchemy. Output still looks good :)
+    print(df)
+
 driverstat()
+ferraristat()
