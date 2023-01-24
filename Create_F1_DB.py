@@ -15,7 +15,7 @@ mycursor = cnt.cursor()
 
 mycursor.execute("CREATE DATABASE F1")
 
-mycursor.execute("SHOW DATABASES") #Lists all the databases in MySQL
+mycursor.execute("SHOW DATABASES")
 for databases in mycursor:
     print(databases)
 
