@@ -3,11 +3,13 @@ import numpy as np
 import sqlalchemy
 import mysql.connector
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, abspath
 from MellonAccess import MellonArray
 
-dataloc = "C:\\Users\\joeye\\Desktop\\Projets\\Programming\\Data\\F1Data_archive\\" #Directory with all F1 data files.
+f1folder = "F1Data_archive"
+dataloc = abspath(f1folder) "Where all the F1 data resides"
 f1files = [f for f in listdir(dataloc) if isfile(join(dataloc, f))]  #Gathering data files names.
+
 mc = MellonArray() #Pulls username and password to access MySQL.
 mcu = str(mc[0])[2:-2] #Cleaning string username for SQL connector.
 mcp = str(mc[1])[2:-2] #Cleaning string password for SQL connector.
