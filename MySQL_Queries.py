@@ -5,12 +5,13 @@ import pandas as pd
 mc = MellonArray() #Pulls username and password to access MySQL.
 mcu = str(mc[0])[2:-2] #Cleaning string username for SQL connector.
 mcp = str(mc[1])[2:-2] #Cleaning string password for SQL connector.
+mch = str(mc[2])[2:-2] #Cleaning string host for SQL connector.
 
 #MySQL Connector.
 cnt = mysql.connector.connect(
     user= mcu,
     password= mcp,
-    host= "127.0.0.1"
+    host= mch
     )
 mycursor = cnt.cursor()
 

@@ -1,7 +1,9 @@
 import csv
+import os.path
 
 def MellonArray():
-    fpath = r"C:\Users\joeye\Desktop\Projets\Programming\MySQL\MySQLMellon.txt"
+    file_name = "MySQLMellon.txt"
+    fpath = os.path.abspath(file_name)
     acarray = [] #Container for username and password
 
     with open(fpath, "r") as ftext:
@@ -10,4 +12,7 @@ def MellonArray():
         for row in reader:
             acarray.append(row) #inserts username and password, respectively, in list
 
+    print(acarray)
     return acarray
+
+MellonArray()
