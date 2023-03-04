@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #!/usr/bin/env bash python3 Create_F1_DB.py
 #!/usr/bin/env bash python3 Create_Tables.py
