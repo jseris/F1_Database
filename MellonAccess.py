@@ -15,19 +15,8 @@ def MellonArray():
     return acarray
 
 class Creds:
-    mc = MellonArray() #Pulls username and password to access MySQL
-    def __init__(mcu,mcp,mch)
-        mcu = str(mc[0])[2:-2] #Changes the username list object to a string and removes [""]
-        mcp = str(mc[1])[2:-2] #Changes the password list object to a string and removes [""]
-        mch = str(mc[2])[2:-2] #Changes the host list object to a string and removes [""]
-
-    def crt_crsr():
-        cntpass = Creds()
-        cnt = mysql.connector.connect(
-            user= cntpass.mcu,
-            password= cntpass.mcp,
-            host= cntpass.mch
-            )
-
-        mycursor = cnt.cursor()
-        return mycursor
+    def __init__(self):
+        self.mc = MellonArray()
+        self.mcu = str(self.mc[0])[2:-2] #Changes the username list object to a string and removes [""]
+        self.mcp = str(self.mc[1])[2:-2] #Changes the password list object to a string and removes [""]
+        self.mch = str(self.mc[2])[2:-2] #Changes the host list object to a string and removes [""]
