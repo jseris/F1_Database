@@ -1,18 +1,10 @@
 import mysql.connector
-from MellonAccess import MellonArray
+from MellonAccess import Creds
 
-mc = MellonArray() #Pulls username and password to access MySQL
-mcu = str(mc[0])[2:-2] #Changes the username list object to a string and removes [""]
-mcp = str(mc[1])[2:-2] #Changes the password list object to a string and removes [""]
-mch = str(mc[2])[2:-2] #Changes the host list object to a string and removes [""]
+x = Creds()
 
-cnt = mysql.connector.connect(
-    user= mcu,
-    password= mcp,
-    host= mch
-    )
-
-mycursor = cnt.cursor()
+print(x.mcu,x.mcp,x.mch)
+mycursor = x.crt_crsr()
 
 mycursor.execute("USE F1")
 
