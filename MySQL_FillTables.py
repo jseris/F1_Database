@@ -7,7 +7,7 @@ from os.path import isfile, join, abspath
 from MellonAccess import MellonArray
 
 f1folder = "F1Data_archive"
-dataloc = abspath(f1folder) "Where all the F1 data resides"
+dataloc = abspath(f1folder) #Where all the F1 data resides
 f1files = [f for f in listdir(dataloc) if isfile(join(dataloc, f))]  #Gathering data files names.
 
 mc = MellonArray() #Pulls username and password to access MySQL.

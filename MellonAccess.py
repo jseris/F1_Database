@@ -12,7 +12,6 @@ def MellonArray():
         for row in reader:
             acarray.append(row) #inserts username and password, respectively, in list
 
-    print(acarray)
     return acarray
 
 MellonArray()
