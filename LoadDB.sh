@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#!/usr/bin/env bash python3 Create_F1_DB.py
-#!/usr/bin/env bash python3 Create_Tables.py
-#!/usr/bin/env bash python3 MySQL_FillTables.py
-#!/usr/bin/env bash python3 MySQL_Queries.py
+python3 Create_F1_DB.py
+python3 Create_Tables.py
+python3 MySQL_FillTables.py
+python3 MySQL_Queries.py
