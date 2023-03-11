@@ -1,6 +1,6 @@
 <h1>Introduction</h1>
 
-<p style="font-size: 18px">Hello, welcome to my relational database architecture project. For this project, I focused on taking CSV files consisting of Formula One data and creating a MySQL database using Python. There was plenty to consider while working on this project, which I will highlight below.</p>
+<p style="font-size: 18px">Hello, welcome to my relational database architecture project for GitHub. For this project, I focused on taking CSV files consisting of Formula One data and creating a MySQL database using Python. There was plenty to consider while working on this project, which I will highlight below.</p>
 
 <h1>Considerations</h1>
 
